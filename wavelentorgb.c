@@ -1,4 +1,4 @@
-/* $Id: program.c,v 1.5 2001/06/21 15:42:45 rsmith Exp rsmith $
+/* $Id: wavelentorgb.c,v 1.1 2001/08/20 10:27:30 rsmith Exp rsmith $
  * -*- c -*-
  * This file is part of ...
  * Copyright (C) 2001  R.F. Smith <rsmith@xs4all.nl>
@@ -17,7 +17,10 @@
  * with this program; if not, write to the Free Software Foundation, Inc.,
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  *
- * $Log: program.c,v $
+ * $Log: wavelentorgb.c,v $
+ * Revision 1.1  2001/08/20 10:27:30  rsmith
+ * Initial revision
+ *
  *
  */
 
@@ -152,7 +155,7 @@ int main(int argc, char *argv[])
       printf("%s: wavelenghts should be in range 380 .. 780 nm\n", argv[0]);
     } else {
       /*+ - report the values +*/
-      printf("%d nm = %3u, %3u, %3u\n", nm, 
+      printf("%d nm = %3u %3u %3u\n", nm, 
              (unsigned)rgb[0], (unsigned)rgb[1], (unsigned)rgb[2]);
     }
   }
@@ -161,4 +164,4 @@ int main(int argc, char *argv[])
 #endif /* TEST */
 
 
-/* EOF $RCSfile: program.c,v $ */
+/* EOF $RCSfile: wavelentorgb.c,v $ */
