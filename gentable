@@ -1,5 +1,5 @@
 # -*- shell-script -*-
-# $Id$
+# $Id: gentable,v 1.2 2001/08/20 13:38:36 rsmith Exp rsmith $
 # script to generate a table for wavelength -> rgb conversion
 
 CFILE=wl2rgb.c
@@ -27,7 +27,7 @@ cat >>$CFILE <<EOF
 
 int wl2rgb(const int nm, char rgb[3])
 {
-  int offset = nm - 380;
+  int offset = (nm - 380)*3;
   if (nm < 380 || nm > 780)
     return 1;
   if (rgb != 0)
