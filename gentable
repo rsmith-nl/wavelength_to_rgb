@@ -1,5 +1,5 @@
 # -*- shell-script -*-
-# $Id$
+# $Id: gentable,v 1.5 2003/05/21 16:13:46 rsmith Exp $
 # script to generate a table for wavelength -> rgb conversion
 
 CFILE=wl2rgb.c

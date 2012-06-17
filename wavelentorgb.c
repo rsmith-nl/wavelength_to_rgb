@@ -1,4 +1,4 @@
-/* $Id: wavelentorgb.c,v 1.1 2001/08/20 10:27:30 rsmith Exp rsmith $
+/* $Id: wavelentorgb.c,v 1.2 2001/08/20 13:40:54 rsmith Exp $
  * -*- c -*-
  * This file is part of ...
  * Copyright (C) 2001  R.F. Smith <rsmith@xs4all.nl>
@@ -18,6 +18,9 @@
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  *
  * $Log: wavelentorgb.c,v $
+ * Revision 1.2  2001/08/20 13:40:54  rsmith
+ * REmvoed commas from RGB output.
+ *
  * Revision 1.1  2001/08/20 10:27:30  rsmith
  * Initial revision
  *
