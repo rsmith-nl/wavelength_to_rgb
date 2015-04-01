@@ -10,8 +10,10 @@
 
 '''Generates a Python table to convert wavelenths in nm to (R,G,B) tuples.'''
 
+from __future__ import print_function, division
 import base64
 import zlib
+
 
 def _adjust(color, factor):
     if color < 0.01:
@@ -24,6 +26,7 @@ def _adjust(color, factor):
     if rv > max_intensity:
         return max_intensity
     return rv
+
 
 def wavelen2rgb(nm):
     """Converts a wavelength between 380 and 780 nm to an RGB color tuple."""
@@ -44,7 +47,7 @@ def wavelen2rgb(nm):
         blue = -(nm - 510.0) / (510.0 - 490.0)
     elif nm < 580:
         red = (nm - 510.0) / (580.0 - 510.0)
-        green = 1.0   
+        green = 1.0
     elif nm < 645:
         red = 1.0
         green = -(nm - 645.0) / (645.0 - 580.0)
@@ -58,39 +61,40 @@ def wavelen2rgb(nm):
     else:
         factor = 0.3 + 0.7*(780.0 - nm) / (780.0 - 700.0)
     # Return the calculated values in an (R,G,B) tuple.
-    return (_adjust(red, factor), _adjust(green, factor), 
+    return (_adjust(red, factor), _adjust(green, factor),
             _adjust(blue, factor))
 
 
-def txttable():
-    limit = 78
-    print '# Table to convert wavelengths to (R,G,B) values.'
-    print '# The start of the table is at 380 nm.'
-    outs = 'rgbtable = ('
-    for wl in xrange(380, 780):
-        clr = wavelen2rgb(wl)
-        add = '{}, '.format(clr)
-        if len(outs)+len(add) > limit:
-            print outs
-            outs = '  '+add
-        else:
-            outs += add
-    clr = wavelen2rgb(780)
-    add = '{})'.format(clr)
-    if len(outs)+len(add) > limit:
-        print outs
-        print '  '+add
-    else:
-        print outs+add
+# def txttable():
+#    limit = 78
+#    print('# Table to convert wavelengths to (R,G,B) values.')
+#    print('# The start of the table is at 380 nm.')
+#    outs = 'rgbtable = ('
+#    for wl in range(380, 781):
+#        clr = wavelen2rgb(wl)
+#        add = '{}, '.format(clr)
+#        if len(outs)+len(add) > limit:
+#            print(outs)
+#            outs = '  '+add
+#        else:
+#            outs += add
+#    clr = wavelen2rgb(780)
+#    add = '{})'.format(clr)
+#    if len(outs)+len(add) > limit:
+#        print(outs)
+#        print('  '+add)
+#    else:
+#        print(outs+add)
 
 
 def binstr():
     clrs = []
-    for wl in xrange(380, 781):
+    for wl in range(380, 781):
         r, g, b = wavelen2rgb(wl)
         clrs.append(chr(r) + chr(g) + chr(b))
     raw = ''.join(clrs)
     return base64.b64encode(zlib.compress(raw, 9))
+
 
 def split_len(seq, length):
     return [seq[i:i+length] for i in range(0, len(seq), length)]
@@ -102,11 +106,11 @@ def bintable():
     start = '_ctbl = "{}"'.format(start)
     pieces = ['"{}"'.format(p) for p in pieces]
     pieces.insert(0, start)
-    print 'import base64'
-    print 'import zlib\n'
-    print ' \\\n'.join(pieces)
-    print '_ctbl = zlib.decompress(base64.b64decode(_ctbl))'
-    print r"""
+    print('import base64')
+    print('import zlib\n')
+    print(' \\\n'.join(pieces))
+    print('_ctbl = zlib.decompress(base64.b64decode(_ctbl))')
+    fs = r"""
 def rgb(nm):
     if nm < 380 or nm > 780:
         raise ValueError('wavelength out of range')
@@ -116,6 +120,8 @@ def rgb(nm):
     b = ord(_ctbl[nm+2])
     return r, g, b
 """
+    print(fs)
+
 
 if __name__ == '__main__':
     bintable()

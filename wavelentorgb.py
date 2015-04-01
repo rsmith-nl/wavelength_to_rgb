@@ -17,7 +17,7 @@ gamma = 0.8
 maxc = 255
 
 
-def wavelen2rgb(nm): # pylint: disable=R0912
+def wavelen2rgb(nm):  # pylint: disable=R0912
     """Convert a wavelength to an RGB tuple
 
     :nm: wavelength in nanometers
@@ -55,7 +55,7 @@ def wavelen2rgb(nm): # pylint: disable=R0912
     else:
         red = 1.0
     # Let the intensity fall off near the vision limits.
-    #print('DEBUG: r = {}, g = {}, b = {}'.format(red, green, blue))
+    # print('DEBUG: r = {}, g = {}, b = {}'.format(red, green, blue))
     if nm < 420:
         factor = 0.3 + 0.7*(nm - 380.0) / (420.0 - 380.0)
     elif nm < 701:
@@ -63,7 +63,7 @@ def wavelen2rgb(nm): # pylint: disable=R0912
     else:
         factor = 0.3 + 0.7*(780.0 - nm) / (780.0 - 700.0)
     # Return the adjusted values
-    return (adjust(red, factor), adjust(green, factor), 
+    return (adjust(red, factor), adjust(green, factor),
             adjust(blue, factor))
 
 
