@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 #
 # Author: R.F. Smith <rsmith@xs4all.nl>
-# Last modified: 2015-05-04 00:33:06 +0200
+# Last modified: 2015-05-04 00:50:17 +0200
 #
 # To the extent possible under law, Roland Smith has waived all copyright and
 # related or neighboring rights to gentable.py. This work is published from
@@ -24,12 +24,13 @@ def wavelen2rgb(nm):
     Returns:
         a 3-tuple (red, green, blue) of integers in the range 0-255.
     """
+
     def adjust(color, factor):
         if color < 0.01:
             return 0
         max_intensity = 255
         gamma = 0.80
-        rv = int(round(max_intensity*(color*factor)**gamma))
+        rv = int(round(max_intensity * (color * factor) ** gamma))
         if rv < 0:
             return 0
         if rv > max_intensity:
@@ -61,14 +62,13 @@ def wavelen2rgb(nm):
         red = 1.0
     # Let the intensity fall off near the vision limits.
     if nm < 420:
-        factor = 0.3 + 0.7*(nm - 380.0) / (420.0 - 380.0)
+        factor = 0.3 + 0.7 * (nm - 380.0) / (420.0 - 380.0)
     elif nm < 701:
         factor = 1.0
     else:
-        factor = 0.3 + 0.7*(780.0 - nm) / (780.0 - 700.0)
+        factor = 0.3 + 0.7 * (780.0 - nm) / (780.0 - 700.0)
     # Return the calculated values in an (R,G,B) tuple.
-    return (adjust(red, factor), adjust(green, factor),
-            adjust(blue, factor))
+    return (adjust(red, factor), adjust(green, factor), adjust(blue, factor))
 
 
 def binclrs():
@@ -80,7 +80,7 @@ def binclrs():
 
 
 def split_len(seq, length):
-    return [seq[i:i+length] for i in range(0, len(seq), length)]
+    return [seq[i:i + length] for i in range(0, len(seq), length)]
 
 
 def bintable():
