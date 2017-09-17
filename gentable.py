@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 #
 # Author: R.F. Smith <rsmith@xs4all.nl>
-# Last modified: 2017-09-17 11:42:37 +0200
+# Last modified: 2017-09-17 11:47:31 +0200
 #
 # To the extent possible under law, Roland Smith has waived all copyright and
 # related or neighboring rights to gentable.py. This work is published from
@@ -84,7 +84,7 @@ def split_len(seq, length):
 
 
 def bintable():
-    pieces = split_len(binclrs(), 60)
+    pieces = split_len(binclrs(), 65)
     start = pieces.pop(0)
     start = '_ctbl = {}'.format(start)
     pieces = ['        {}'.format(p) for p in pieces]
