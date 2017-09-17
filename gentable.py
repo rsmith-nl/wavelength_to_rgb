@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 #
 # Author: R.F. Smith <rsmith@xs4all.nl>
-# Last modified: 2017-09-17 12:00:32 +0200
+# Last modified: 2017-09-17 14:07:04 +0200
 #
 # To the extent possible under law, Roland Smith has waived all copyright and
 # related or neighboring rights to gentable.py. This work is published from
@@ -115,10 +115,7 @@ def rgb(nm):
     if nm < 380 or nm > 780:
         raise ValueError('wavelength out of range')
     nm = (nm - 380)*3
-    r = _ctbl[nm]
-    g = _ctbl[nm+1]
-    b = _ctbl[nm+2]
-    return r, g, b'''
+    return _ctbl[nm:nm+3]'''
     print(fs)
 
 

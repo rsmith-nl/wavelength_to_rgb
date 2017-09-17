@@ -37,7 +37,4 @@ def rgb(nm):
     if nm < 380 or nm > 780:
         raise ValueError('wavelength out of range')
     nm = (nm - 380)*3
-    r = _ctbl[nm]
-    g = _ctbl[nm+1]
-    b = _ctbl[nm+2]
-    return r, g, b
+    return _ctbl[nm:nm+3]
