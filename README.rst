@@ -5,17 +5,38 @@ Converting visible wavelengths to (r, g, b)
 :tags: python, wavelength, RGB
 :author: Roland Smith
 
-.. Last modified: 2017-09-17 14:19:42 +0200
+.. Last modified: 2017-09-17 16:06:57 +0200
 
 The ``rgb`` module contains a function that converts from a wavelength in nm
 to an 3-tuple of (R,G,B) values, each in the range 0--255.
 
 .. PELICAN_END_SUMMARY
 
+License
+-------
+
+Both the ``gentable.py`` script and its output ``rgb.py`` are in the public domain.
+
+
+Notes
+-----
+
+The algorithm is based on `Dan Bruton's work`_. The first time I came across
+it was in a Pascal translation of the original Fortran code.
+
+.. _Dan Bruton's work: http://www.physics.sfasu.edu/astro/color/spectra.html
+
 Since the conversion uses a fixed function over a relatively small range of
 values, I pre-compute the results for every integer value of the wavelength
-between 380 and 780 nm and record them in a ``bytes`` object.
+between 380 and 780 nm and record them in a ``bytes`` object. Three bytes are
+used for a single wavelength in the sequence red, green, blue.
 This ``bytes`` object is compressed with zlib and then encoded in base64.
+
+The code is generated as follows.
+
+.. code-block:: console
+
+    python3 gentable.py > rgb.py
 
 The compression reduces the amount of data approximately by half. Encoding
 adds to the length, but the encoded string is significantly shorter than the
