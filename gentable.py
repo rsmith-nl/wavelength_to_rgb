@@ -1,13 +1,11 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
+# file: gentable.py
+# vim:fileencoding=utf-8:fdm=marker:ft=python
 #
-# Author: R.F. Smith <rsmith@xs4all.nl>
-# Last modified: 2017-09-17 15:59:15 +0200
-#
-# To the extent possible under law, Roland Smith has waived all copyright and
-# related or neighboring rights to gentable.py. This work is published from
-# the Netherlands. See http://creativecommons.org/publicdomain/zero/1.0/
-
+# Copyright © 2018 R.F. Smith <rsmith@xs4all.nl>.
+# SPDX-License-Identifier: MIT
+# Created: 2017-09-17T14:01:14+0200
+# Last modified: 2018-05-06T18:54:00+0200
 '''Generates a Python table to convert wavelenths in nm to (R,G,B) tuples.'''
 
 import base64
@@ -30,7 +28,7 @@ def wavelen2rgb(nm):
             return 0
         max_intensity = 255
         gamma = 0.80
-        rv = int(round(max_intensity * (color * factor) ** gamma))
+        rv = int(round(max_intensity * (color * factor)**gamma))
         if rv < 0:
             return 0
         if rv > max_intensity:
@@ -93,10 +91,6 @@ def bintable():
 # You can find this script at https://github.com/rsmith-nl/wavelength_to_rgb
 # The algorithm is based on Dan Bruton's work in
 # http://www.physics.sfasu.edu/astro/color/spectra.html
-#
-# To the extent possible under law, Roland Smith has waived all copyright and
-# related or neighboring rights to this code. This work is published from
-# the Netherlands. See http://creativecommons.org/publicdomain/zero/1.0/
 """
     print(hdr)
     print('import base64')
@@ -118,8 +112,8 @@ def rgb(nm):
     nm = int(round(nm))
     if nm < 380 or nm > 780:
         raise ValueError('wavelength out of range')
-    nm = (nm - 380)*3
-    return _ctbl[nm:nm+3]'''
+    nm = (nm - 380) * 3
+    return _ctbl[nm:nm + 3]'''
     print(fs)
 
 

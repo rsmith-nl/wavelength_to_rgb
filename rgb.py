@@ -2,10 +2,6 @@
 # You can find this script at https://github.com/rsmith-nl/wavelength_to_rgb
 # The algorithm is based on Dan Bruton's work in
 # http://www.physics.sfasu.edu/astro/color/spectra.html
-#
-# To the extent possible under law, Roland Smith has waived all copyright and
-# related or neighboring rights to this code. This work is published from
-# the Netherlands. See http://creativecommons.org/publicdomain/zero/1.0/
 
 import base64
 import zlib
@@ -40,5 +36,5 @@ def rgb(nm):
     nm = int(round(nm))
     if nm < 380 or nm > 780:
         raise ValueError('wavelength out of range')
-    nm = (nm - 380)*3
-    return _ctbl[nm:nm+3]
+    nm = (nm - 380) * 3
+    return _ctbl[nm:nm + 3]

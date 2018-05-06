@@ -5,7 +5,7 @@ Converting visible wavelengths to (r, g, b)
 :tags: python, wavelength, RGB
 :author: Roland Smith
 
-.. Last modified: 2017-09-17 16:06:57 +0200
+.. Last modified: 2018-04-17T19:50:43+0200
 
 The ``rgb`` module contains a function that converts from a wavelength in nm
 to an 3-tuple of (R,G,B) values, each in the range 0--255.
@@ -15,7 +15,8 @@ to an 3-tuple of (R,G,B) values, each in the range 0--255.
 License
 -------
 
-Both the ``gentable.py`` script and its output ``rgb.py`` are in the public domain.
+The ``gentable.py`` script is licensed under the MIT licensce.
+Its output ``rgb.py`` is automatically generated and thus not copyrightable.
 
 
 Notes
